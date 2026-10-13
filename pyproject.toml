@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "morningstar-ai"
+version = "0.1.0"
+description = "世界顶级 AI 系统底座：复用世界顶级库（零重写）+ 自研纯实现 forge 模块，数学不变量与跨库交叉验证证明其世界级正确性。"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "晨星 (MorningStar)", email = "CJX0712@users.noreply.github.com" }]
+keywords = ["ai", "machine-learning", "deep-learning", "forge", "linear-algebra", "optimization"]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "scikit-learn>=1.3",
+]
+
+[project.optional-dependencies]
+torch = ["torch>=2.0"]
+test = ["pytest>=7.0"]
+dev = ["pytest>=7.0", "torch>=2.0"]
+
+[project.urls]
+Homepage = "https://github.com/CJX0712/morningstar-ai-forge"
+Repository = "https://github.com/CJX0712/morningstar-ai-forge"
+
+[tool.setuptools.packages.find]
+include = ["morningstar_ai*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -ra"
