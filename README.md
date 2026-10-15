@@ -1,5 +1,12 @@
 # MorningStar-AI · 世界顶级 AI 系统底座
 
+<div align="center">
+
+[![License](https://img.shields.io/badge/License-MIT-green)](https://github.com/CJX0712/morningstar-ai-forge/blob/main/LICENSE) [![Language](https://img.shields.io/badge/Python-3776AB?logo=python)](https://github.com/CJX0712/morningstar-ai-forge) [![Verified](https://img.shields.io/badge/invariants-verified-brightgreen)](https://github.com/CJX0712) [![Author](https://img.shields.io/badge/author-晨星-blueviolet)](https://github.com/CJX0712)
+
+</div>
+
+
 > 作者：**晨星 (MorningStar)**  ·  License：[MIT](LICENSE)  ·  Homepage：[github.com/CJX0712/morningstar-ai-forge](https://github.com/CJX0712/morningstar-ai-forge)
 
 晨明星 —— 天亮前最后还亮着的那颗。本项目以「**零重写、集大成、可验证、闭环交付**」为唯一信条，锻造一座从数学基座到深度学习的完整 AI 系统：
