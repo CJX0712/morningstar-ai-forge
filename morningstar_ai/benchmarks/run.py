@@ -5,11 +5,16 @@
 """
 from __future__ import annotations
 
+import sys
 import time
 
 import numpy as np
 
 from .. import supervised, unsupervised, deep, _random
+
+# Windows 终端默认 GBK(charmap)，报告里的中文/符号会触发 UnicodeEncodeError
+if sys.stdout.encoding and sys.stdout.encoding.lower() not in ("utf-8", "utf8"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 
 def _gen():

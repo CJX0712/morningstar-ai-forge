@@ -134,6 +134,16 @@ class MLP:
             loss = ((out - torch.tensor(y, dtype=torch.float64)) ** 2).mean()
         loss.backward()
         grad_np = self._loss_grad(self._w, X, y)[1]
-        diff = max(np.abs(np.asarray(w1.grad) - grad_np[: W1.size]).max(),
-                   np.abs(np.asarray(w2.grad) - grad_np[-W2.size:]).max())
+        # grad 拼接顺序与 _loss_grad 一致：[W1, b1, W2, b2]
+        d, h, o = X.shape[1], self.hidden, self.out_
+        gW1 = grad_np[: d * h].reshape(d, h)
+        gb1 = grad_np[d * h : d * h + h]
+        gW2 = grad_np[d * h + h : d * h + h + h * o].reshape(h, o)
+        gb2 = grad_np[d * h + h + h * o :]
+        diff = max(
+            np.abs(np.asarray(w1.grad) - gW1).max(),
+            np.abs(np.asarray(b1t.grad) - gb1).max(),
+            np.abs(np.asarray(w2.grad) - gW2).max(),
+            np.abs(np.asarray(b2t.grad) - gb2).max(),
+        )
         return {"available": True, "max_grad_diff_vs_torch": float(diff), "passed": bool(diff < 1e-6)}
